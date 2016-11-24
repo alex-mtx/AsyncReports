@@ -1,0 +1,314 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ticket.corporativo/pedido"
+	attributeFormDefault="unqualified" elementFormDefault="qualified"
+	targetNamespace="http://ticket.corporativo/pedido">
+	<element name="Pedido" type="tns:Pedido" />
+	<element name="SolicitacaoReversao" type="tns:SolicitacaoReversao" />
+	<element name="SolicitacoesReversao" type="tns:SolicitacoesReversao" />
+	<complexType name="Pedido">
+		<sequence>
+			<element name="orderNumber" type="string" />
+			<element name="headerID" type="string" />
+			<element name="header" type="tns:Header" />
+			<element maxOccurs="unbounded" name="linha" type="tns:Linha" />
+			<element name="extensao" type="tns:Extensao" />
+			<element minOccurs="0" name="RecipienteAtualizacaoStatus"
+				type="string" />
+			<element minOccurs="0" name="SistemaOrigem" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="Header">
+		<sequence>
+			<element name="CodigoArquivo" type="long" />
+			<element name="CodigoPedido" type="long" />
+			<element name="NumeroContrato" type="string" />
+			<element name="CodigoProduto" type="string" />
+			<element name="CodigoFormaProduto" type="string" />
+			<element name="CodigoTipoPedido" type="long" />
+			<element name="DataGeracaoArquivo" type="dateTime" />
+			<element name="DataEntrega" type="dateTime" />
+			<element name="ReferenciaDocumento" type="string" />
+			<element name="VolumePedido" type="string" />
+			<element name="EmailPedidoNPTC" type="string" />
+			<element name="NumeroReembolso" nillable="true" type="string" />
+			<element name="ContextoDevolucao" nillable="true" type="string" />
+			<element name="HeaderID" nillable="true" type="long" />
+			<element name="IDNotaFiscal" nillable="true" type="string" />
+			<element name="CpfCnpjCliente" nillable="true" type="string" />
+			<element name="QtdeTotal" type="long" />
+			<element name="ValorTotal" type="decimal" />
+			<element name="QuantidadeTotalUnidade" type="long" />
+			<element name="QuantidadeTotalBeneficiario" type="long" />
+			<element name="Erro" nillable="true" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="Linha">
+		<sequence>
+			<element name="CodigoPedido" type="long" />
+			<element name="CodigoTipoLinha" type="long" />
+			<element name="CodigoItemEvento" type="string" />
+			<element name="CodigoLinha" type="long" />
+			<element name="QtdeItens" type="long" />
+			<element name="ValorTarifacao" type="decimal" />
+			<element name="Erro" nillable="true" type="string" />
+			<element minOccurs="0" name="UnidadeEntrega" nillable="true"
+				type="long" />
+			<element minOccurs="0" name="QuantidadeFuncionarios"
+				nillable="true" type="long" />
+			<element minOccurs="0" name="Departamento" nillable="true"
+				type="string" />
+			<element minOccurs="0" name="MesReferencia" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="CodigoTipoPersonalizacao"
+				nillable="true" type="long" />
+			<element minOccurs="0" name="PersonalizacaoMontadaCliente"
+				nillable="true" type="string" />
+			<element minOccurs="0" name="AgrupamentoFrete" nillable="true"
+				type="long" />
+			<element minOccurs="0" name="IdLinhaContrato" nillable="true"
+				type="long" />
+			<element minOccurs="0" name="IdContrato" nillable="true"
+				type="string" />
+			<element minOccurs="0" name="OrigemImportacao" nillable="true"
+				type="string" />
+			<element minOccurs="0" name="IdItemBeneficio" nillable="true"
+				type="long" />
+			<element minOccurs="0" name="QuantidadeBilhetesTT" nillable="true"
+				type="long" />
+			<element minOccurs="0" name="NumeroNotaFiscalDevolvida"
+				nillable="true" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="Extensao">
+		<sequence>
+			<element name="CodigoPedido" type="long" />
+			<element name="CarrinhoCompras" nillable="true" type="long" />
+			<element name="DataEntrega" type="dateTime" />
+			<element name="TipoFaturamento" type="string" />
+			<element name="VolumeArquivo" type="long" />
+			<element name="CodigoArquivo" type="long" />
+			<element name="IndexArquivo" type="long" />
+			<element name="IDFuncEndEntregaNF" nillable="true" type="long" />
+			<element name="ObsNotaFiscal" nillable="true" type="string" />
+			<element name="DataVectoPedido" nillable="true" type="dateTime" />
+			<element name="EmailNFe1" type="string" />
+			<element name="EmailNFe2" nillable="true" type="string" />
+			<element name="EmailNFe3" nillable="true" type="string" />
+			<element name="ImprimeNF" nillable="true" type="string" />
+			<element name="NumeroPedidoCliente" nillable="true" type="string" />
+			<element name="QtdeUnidadeEntrega" type="long" />
+			<element name="QtdeFuncionarios" type="long" />
+			<element name="QtdeItens" type="long" />
+			<element name="DataInicioUtilizacaoVT" nillable="true" type="dateTime" />
+			<element name="DataFimUtilizacaoVT" nillable="true" type="dateTime" />
+			<element name="TipoRateioFrete" nillable="true" type="string" />
+			<element name="OrdemListaFuncionario" nillable="true" type="string" />
+			<element name="GrupoEconomico" nillable="true" type="long" />
+			<element name="TipoMontagem" nillable="true" type="string" />
+			<element name="NumeroRemessaKit" nillable="true" type="long" />
+			<element name="DataConversaoBilhetes" nillable="true" type="dateTime" />
+			<element name="IdentificadorKit" nillable="true" type="string" />
+			<element name="NumeroPedidoOrigem" nillable="true" type="string" />
+			<element name="Erro" nillable="true" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="SolicitacaoReversao">
+		<sequence>
+			<element name="Id" type="long" />
+			<element name="NumeroPedido" type="string" />
+			<element name="Status" type="int" />
+			<element name="NumeroCartao" type="decimal" />
+			<element minOccurs="0" name="ValorReversao" nillable="true"
+				type="decimal" />
+			<element minOccurs="0" name="DataReversao" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="NomeFuncionario" type="string" />
+			<element minOccurs="0" name="ContratoNumero" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="SolicitacoesReversao">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0"
+				name="SolicitacoesReversao" type="tns:SolicitacaoReversao" />
+		</sequence>
+	</complexType>
+	<element name="Arquivo" nillable="true" type="tns:Arquivo" />
+	<complexType name="Arquivo">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="Nome" type="string" />
+			<element minOccurs="0" name="SistemaOrigem" type="string" />
+		</sequence>
+	</complexType>
+	<element name="Beneficio" nillable="true" type="tns:Beneficio" />
+	<complexType name="Beneficio">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="UnidadeId" type="long" />
+			<element minOccurs="0" name="PedidoId" type="long" />
+			<element minOccurs="0" name="IdentificacaoBeneficiario" type="long"
+				nillable="true" />
+			<element minOccurs="0" name="NomeBeneficiario" type="string" />
+			<element minOccurs="0" name="NomeResumido" type="string" />
+			<element minOccurs="0" name="CodigoDepartamento" type="string" />
+			<element minOccurs="0" name="NomeDepartamento" type="string" />
+			<element minOccurs="0" name="ValorBeneficio" type="decimal"
+				nillable="true" />
+			<element minOccurs="0" name="CPF" type="long" nillable="true" />
+		</sequence>
+	</complexType>
+	<element name="CanalEntrada" nillable="true" type="tns:CanalEntrada" />
+	<complexType name="CanalEntrada">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="Nome" type="string" />
+		</sequence>
+	</complexType>
+	<element name="PedidoPATDetalhado" nillable="true"
+		type="tns:PedidoPATDetalhado" />
+	<complexType name="PedidoPATDetalhado">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="Arquivo" type="tns:Arquivo" />
+			<element minOccurs="0" name="Cliente" type="tns:ClienteVO" />
+			<element minOccurs="0" name="Contrato" type="tns:ContratoClienteVO" />
+			<element minOccurs="0" name="Produto" type="tns:ProdutoVO" />
+			<element minOccurs="0" name="DataPedido" type="dateTime"
+				nillable="true" />
+			<element minOccurs="0" name="DataEntrega" type="dateTime"
+				nillable="true" />
+			<element minOccurs="0" name="NumeroPedidoCliente" type="string" />
+			<element minOccurs="0" name="NumeroPedido" type="string" />
+			<element minOccurs="0" name="Status" type="tns:StatusPedido" />
+			<element minOccurs="0" name="Tarifacoes" type="tns:ListaTarifacoes" />
+			<element minOccurs="0" name="Unidades" type="tns:ListaUnidades" />
+			<element minOccurs="0" name="ValorTotal" type="decimal" nillable="true"/>
+		</sequence>
+	</complexType>
+	<element name="PedidoSumarioDepartamento" type="tns:PedidoSumarioDepartamento" />
+	<complexType name="PedidoSumarioDepartamento">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="Arquivo" type="tns:Arquivo" />
+			<element minOccurs="0" name="Cliente" type="tns:ClienteVO" />
+			<element minOccurs="0" name="Contrato" type="tns:ContratoClienteVO" />
+			<element minOccurs="0" name="Produto" type="tns:ProdutoVO" />
+			<element minOccurs="0" name="DataPedido" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="DataEntrega" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="NumeroPedidoCliente" type="string" />
+			<element minOccurs="0" name="NumeroPedido" type="string" />
+			<element minOccurs="0" name="Status" type="tns:StatusPedido" />
+			<element minOccurs="0" name="Tarifacoes" type="tns:ListaTarifacoes" />
+			<element minOccurs="0" name="Departamentos" type="tns:ListaDepartamentoSumarizado" />
+			<element minOccurs="0" name="ValorTotal" type="decimal" nillable="true"/>
+		</sequence>
+	</complexType>
+	<element name="ListaPedidoSumarioDepartamento" type="tns:ListaPedidoSumarioDepartamento" />
+	<complexType name="ListaPedidoSumarioDepartamento">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0"
+				name="PedidoSumarioDepartamento" nillable="true"
+				type="tns:PedidoSumarioDepartamento" />
+		</sequence>
+	</complexType>
+	<element name="ListaPedidosPATDetalhados" type="tns:ListaPedidosPATDetalhados" />
+	<complexType name="ListaPedidosPATDetalhados">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="PedidoPATDetalhado"
+				nillable="true" type="tns:PedidoPATDetalhado" />
+		</sequence>
+	</complexType>
+	<complexType name="ListaDepartamentoSumarizado">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0"
+				name="DepartamentoSumarizado" nillable="true"
+				type="tns:DepartamentoSumarizado" />
+		</sequence>
+	</complexType>
+	<complexType name="DepartamentoSumarizado">
+		<sequence>
+			<element minOccurs="0" name="UnidadeId" type="long" />
+			<element minOccurs="0" name="PedidoId" type="long" />
+			<element minOccurs="0" name="NomeUnidade" type="string" />
+			<element minOccurs="0" name="NomeDepartamento" type="string" />
+			<element minOccurs="0" name="CodigoUnidadeEntrega" type="string" />
+			<element minOccurs="0" name="LiberacaoCredito" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="QuantidadeBeneficios" nillable="true"
+				type="int" />
+			<element minOccurs="0" name="ValorTotalBeneficios" nillable="true"
+				type="decimal" />
+		</sequence>
+	</complexType>
+	<complexType name="ListaUnidades">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Unidade"
+				nillable="true" type="tns:Unidade" />
+		</sequence>
+	</complexType>
+	<complexType name="Unidade">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="PedidoId" type="long" />
+			<element minOccurs="0" name="NomeUnidade" type="string" />
+			<element minOccurs="0" name="CodigoUnidadeEntrega" type="string" />
+			<element minOccurs="0" name="LiberacaoCredito" nillable="true"
+				type="dateTime" />
+			<element minOccurs="0" name="Beneficios" nillable="true"
+				type="tns:ListaBeneficios" />
+		</sequence>
+	</complexType>
+	<complexType name="ListaBeneficios">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Beneficio"
+				nillable="true" type="tns:Beneficio" />
+		</sequence>
+	</complexType>
+	<element name="Pedidos" type="tns:Pedidos"/>
+	<complexType name="Pedidos">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="pedido"
+				nillable="true" type="tns:Pedido" />
+		</sequence>
+	</complexType>
+	<complexType name="ProdutoVO">
+		<sequence>
+			<element minOccurs="0" name="Descricao" type="string" />
+			<element minOccurs="0" name="CodigoERP" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="ContratoClienteVO">
+		<sequence>
+			<element minOccurs="0" name="NumContrato" type="string" />
+		</sequence>
+	</complexType>
+	<complexType name="ClienteVO">
+		<sequence>
+			<element minOccurs="0" name="RazaoSocial" type="string" />
+			<element minOccurs="0" name="Cnpj" type="string" />
+		</sequence>
+	</complexType>
+	<element name="ListaTarifacoes" type="tns:ListaTarifacoes" />
+	<complexType name="ListaTarifacoes">
+		<sequence>
+			<element maxOccurs="unbounded" minOccurs="0" name="Tarifacao"
+				nillable="true" type="tns:Tarifacao" />
+		</sequence>
+	</complexType>
+	<element name="Tarifacao" type="tns:Tarifacao" />
+	<complexType name="Tarifacao">
+		<sequence>
+			<element minOccurs="0" name="QuantidadeItens" nillable="true"
+				type="int" />
+			<element minOccurs="0" name="Valor" nillable="true" type="decimal" />
+			<element minOccurs="0" name="Id" type="long" />
+		</sequence>
+	</complexType>
+	<complexType name="StatusPedido">
+		<sequence>
+			<element minOccurs="0" name="Id" type="long" />
+			<element minOccurs="0" name="Descricao" type="string" />
+		</sequence>
+	</complexType>
+</schema>

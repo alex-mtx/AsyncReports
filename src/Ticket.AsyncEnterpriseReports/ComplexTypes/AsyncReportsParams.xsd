@@ -1,0 +1,106 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ticket.corporativo/params/reports"
+	attributeFormDefault="qualified" elementFormDefault="qualified"
+	targetNamespace="http://ticket.corporativo/params/reports">
+
+
+	<element name="PedidoPATDetalhadoPorNomeArquivo" type="tns:PedidoPATDetalhadoPorNomeArquivo" />
+	<element name="ListaPedidoPATDetalhadoPorNomeArquivo" type="tns:ListaPedidoPATDetalhadoPorNomeArquivo" />
+
+	<complexType name="ListaPedidoPATDetalhadoPorNomeArquivo">
+		<sequence>
+			<element name="PedidoPATDetalhadoPorNomeArquivo" type="tns:PedidoPATDetalhadoPorNomeArquivo"
+				maxOccurs="unbounded" />
+
+		</sequence>
+	</complexType>
+
+	<complexType name="ReportRequest">
+		<sequence>
+			<element name="SourceSystem" type="string" />
+			<element name="ReplyTo" type="string" />
+			<element name="CorrelationID" type="string" />
+			<element name="RelativePathDestination" type="tns:RelativePath" />
+			<element name="AcceptedMediaType" type="tns:MediaType" />
+			<element name="BusinessInformation" type="tns:BusinessInformation" />
+			<element name="Provider" type="tns:ResponseProvider" />
+		</sequence>
+	</complexType>
+	<simpleType name="RelativePath">
+		<restriction base="string">
+			<pattern value="([a-zA-Z0-9_-])*"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="MediaType">
+		<restriction base="string">
+			<enumeration value="XML" />
+		</restriction>
+	</simpleType>
+	<simpleType name="BusinessInformation">
+		<restriction base="string">
+			<enumeration value="Order" />
+			<enumeration value="Client" />
+			<enumeration value="Beneficiary" />
+		</restriction>
+	</simpleType>
+	<simpleType name="ResponseProvider">
+		<restriction base="string">
+			<enumeration value="MessageQueue" />
+		</restriction>
+	</simpleType>
+
+
+	<complexType name="PedidoPATDetalhadoPorNomeArquivo">
+		<complexContent>
+			<extension base="tns:ReportRequest">
+				<sequence>
+					<element name="NomeArquivo" type="string" />
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<element name="ReportResponse" type="tns:ReportResponse" />
+	<complexType name="ReportResponse">
+		<sequence>
+			<element name="RequestData" type="tns:ReportRequest" />
+			<element name="ReportFilePath" type="string" />
+			<element name="Status" type="tns:ResponseStatus" />
+		</sequence>
+	</complexType>
+	<element name="BadPayloadMessage" type="tns:BadPayloadMessage" />
+	<complexType name="BadPayloadMessage">
+		<sequence>
+			<element name="RawRequestData" type="string" />
+			<element name="Status" type="tns:ResponseStatus" />
+		</sequence>
+	</complexType>
+
+	<complexType name="ResponseStatus">
+		<sequence>
+			<element name="Detail" type="string" />
+			<element name="StatusCode" type="tns:StatusCode" />
+			<element name="Message" type="string" />
+		</sequence>
+
+	</complexType>
+
+
+	<simpleType name="StatusCode">
+		<restriction base="string">
+			<enumeration value="_201_Created" />
+			<enumeration value="_204_No_Content" />
+			<enumeration value="_400_Bad_Request" /> <!-- Bad Request -->
+			<enumeration value="_412_Pre_Condition_Failed" /> <!-- Pre Condition Failed -->
+			<enumeration value="_415_Unsupported_Media_Type" /> <!-- Unsupported Media Type -->
+			<enumeration value="_500_Internal_Server_Error" />
+			<enumeration value="_501_Not_Implemented" />
+			<enumeration value="_504_Remote_Resource_Timeout" /> <!-- Gateway Timeout -->
+			<enumeration value="_507_Insuficient_Storage" /> <!-- Insufficient Storage -->
+
+		</restriction>
+	</simpleType>
+
+
+
+</schema>
