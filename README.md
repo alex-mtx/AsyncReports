@@ -6,3 +6,4 @@ were threated in the same way: all synchronous, request-response pattern based. 
 <H1>The Solution</H1>
 While the acquisition of a COTS Reporting tool was under way, I designed and developed this system in C#, which allowed us to deliver reports of any size, in any format in an asynchronous way.
 
+![see](/../master/documents/AsyncReports.svg)
